@@ -1,0 +1,48 @@
+﻿@model IEnumerable<UpperAcademy.Dominio.Modelo.Aluno>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Alunos</title>
+</head>
+<body>
+  <h1> Lista de alunos</h1>
+    <p>
+        @Html.ActionLink("Novo", "Create")
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Data_Nascimento)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Nascimento)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Detalhes", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Excluir", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
