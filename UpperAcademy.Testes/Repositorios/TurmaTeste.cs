@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UpperAcademy.Dominio.Modelo;
+using UpperAcademy.Dominio.Enumerados;
 using UpperAcademy.Persistence.nHibernate.Repositorio;
 using NUnit.Framework;
 
@@ -56,9 +57,8 @@ namespace UpperAcademy.Testes.Repositorios
             endereco.UF = "RJ";
             endereco.CEP = "22449-122";
             aluno.DefinirEndereco(endereco);
-            aluno.AdicionarTelefone(1, "21-3977-7587");
-            aluno.AdicionarTelefone(2, "21-9987-0922");
-
+            aluno.DefinirTelefoneResidencial("21-3977-7587");
+            aluno.DefinirTelefoneCelular("21-9987-0922");
             repositorioAluno.Atualizar(aluno);
         }
 
@@ -68,8 +68,10 @@ namespace UpperAcademy.Testes.Repositorios
 
             professor.Nome = "Rafael Torah Racile";
             professor.Data_Nascimento = DateTime.Parse("30/04/1966");
-            professor.Nivel = 1;
-            professor.AdicionarTelefone(1, "21-2133-7577");
+            professor.Nivel =cNivel.Intermadiario;
+            professor.DefinirTelefoneResidencial("21-2133-7577");
+            professor.DefinirTelefoneComercial("21-3977-7587");
+            professor.DefinirTelefoneCelular("21-9987-0922");
 
             EnderecoProfessor endereco = new EnderecoProfessor(professor);
             endereco.Logradouro = "Rua Santana de Assis Pereira";
@@ -80,16 +82,14 @@ namespace UpperAcademy.Testes.Repositorios
             endereco.UF = "RJ";
             endereco.CEP = "22449-122";
             professor.DefinirEndereco(endereco);
-            professor.AdicionarTelefone(1, "21-3977-7587");
-            professor.AdicionarTelefone(2, "21-9987-0922");
 
             repositorioProfessor.Atualizar(professor);
             /**************************************************/
             professor = new Professor();
             professor.Nome = "Amarildo Cardoso";
             professor.Data_Nascimento = DateTime.Parse("22/09/1976");
-            professor.AdicionarTelefone(2, "21-8880-3351");
-            professor.AdicionarTelefone(2, "21-7811-2633");
+            professor.DefinirTelefoneResidencial("21-2880-3351");
+            professor.DefinirTelefoneCelular("21-7811-2633");
 
             endereco = new EnderecoProfessor(professor);
             endereco.Logradouro = "Av. das Américas";

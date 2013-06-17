@@ -255,6 +255,12 @@
   <ItemGroup>
     <Content Include="Views\Aluno\Listar.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Aluno\Adicionar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Aluno\Detalhar.cshtml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

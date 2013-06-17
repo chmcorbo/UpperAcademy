@@ -44,7 +44,6 @@
     <Compile Include="Repositorios\AlunoTeste.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\BancoTeste.cs" />
-    <Compile Include="Repositorios\CargaDadosTeste.cs" />
     <Compile Include="Repositorios\EmprestimoMidiaTeste.cs" />
     <Compile Include="Repositorios\MidiaTeste.cs" />
     <Compile Include="Repositorios\ProfessorTeste.cs" />

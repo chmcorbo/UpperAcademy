@@ -5,45 +5,37 @@ using System.Text;
 using NUnit.Framework;
 using UpperAcademy.Persistence.nHibernate.Repositorio;
 using UpperAcademy.Dominio.Modelo;
+using UpperAcademy.Dominio.Enumerados;
 
 namespace UpperAcademy.Testes.Repositorios
 {
     [TestFixture]
     public class ProfessorTeste
     {
-        Professor professor;
-        Professor professorRecuperado;
-        RepositorioGenerico<Professor> repositorio;
-        String _id_professor;
+        Professor _professor;
+        Professor _professorRecuperado;
+        RepositorioGenerico<Professor> _repositorio;
 
         public ProfessorTeste()
         {
-            repositorio = new RepositorioGenerico<Professor>();
+            _repositorio = new RepositorioGenerico<Professor>();
         }
 
-        [Test]
-        public void a_Incluir_Professor_Sem_Endereco_Sem_Telefone()
+        private Professor Incluir_Sem_Endereco_Sem_Telefone()
         {
-            professor = new Professor();
-            _id_professor = professor.ID;
+            Professor professor = new Professor();
             professor.Nome = "Julio Mirilly";
             professor.Data_Nascimento = DateTime.Parse("08/12/1961");
-            professor.Nivel = 2;
-
-            repositorio.Atualizar(professor);
-
-            professorRecuperado = repositorio.ObterPorID(_id_professor);
-            Assert.AreSame(professor, professorRecuperado);
+            professor.Nivel = cNivel.Intermadiario;
+            _repositorio.Atualizar(professor);
+            return professor;
         }
 
-        [Test]
-        public void b_Incluir_Professor_Com_Endereco_Sem_Telefone()
+        private Professor Incluir_Com_Endereco_Sem_Telefone()
         {
-            professor = new Professor();
-            _id_professor = professor.ID;
+            Professor professor = new Professor();
             professor.Nome = "Amarildo Cardoso";
             professor.Data_Nascimento = DateTime.Parse("22/09/1976");
-
             EnderecoProfessor endereco = new EnderecoProfessor(professor);
             endereco.Logradouro = "Av. das Américas";
             endereco.Numero = "168";
@@ -53,34 +45,29 @@ namespace UpperAcademy.Testes.Repositorios
             endereco.UF = "RJ";
             endereco.CEP = "23983-890";
             professor.DefinirEndereco(endereco);
-
-            repositorio.Atualizar(professor);
-            professorRecuperado = repositorio.ObterPorID(_id_professor);
-            Assert.AreSame(professor, professorRecuperado);
+            _repositorio.Atualizar(professor);
+            return professor;
         }
 
-        [Test]
-        public void c_Incluir_Professor_Sem_Endereco_Com_Telefone()
+        private Professor Incluir_Sem_Endereco_Com_Telefone()
         {
-            professor = new Professor();
-            _id_professor = professor.ID;
+            Professor professor = new Professor();
             professor.Nome = "Thiago Ferreira";
             professor.Data_Nascimento = DateTime.Parse("11/03/1973");
 
-            professor.AdicionarTelefone(1, "21-2133-7577");
-            professor.AdicionarTelefone(2, "21-8880-3351");
-            professor.AdicionarTelefone(2, "21-7811-2633");
+            professor.DefinirTelefoneResidencial("21-2133-7577");
+            professor.DefinirTelefoneComercial("21-2380-3351");
+            professor.DefinirTelefoneCelular("21-7811-2633");
 
-            repositorio.Atualizar(professor);
-            professorRecuperado = repositorio.ObterPorID(_id_professor);
-            Assert.AreSame(professor, professorRecuperado);
+            _repositorio.Atualizar(professor);
+
+            return professor;
         }
 
-        [Test]
-        public void d_Incluir_Professor_Com_Endereco_Com_Telefone()
+        private Professor Incluir_Com_Endereco_Com_Telefone()
         {
-            professor = new Professor();
-            _id_professor = professor.ID;
+            Professor professor = new Professor();
+
             professor.Nome = "Rafael Torah Racile";
             professor.Data_Nascimento = DateTime.Parse("30/04/1966");
 
@@ -93,12 +80,64 @@ namespace UpperAcademy.Testes.Repositorios
             endereco.UF = "RJ";
             endereco.CEP = "22449-122";
             professor.DefinirEndereco(endereco);
-            professor.AdicionarTelefone(1, "21-3977-7587");
-            professor.AdicionarTelefone(2, "21-9987-0922");
+            professor.DefinirTelefoneResidencial("21-3977-7587");
+            professor.DefinirTelefoneCelular("21-9987-0922");
 
-            repositorio.Atualizar(professor);
-            professorRecuperado = repositorio.ObterPorID(_id_professor);
-            Assert.AreSame(professor, professorRecuperado);
+            _repositorio.Atualizar(professor);
+
+            return professor;
+        }
+
+        public Boolean Carga_Inicial()
+        {
+            Boolean erro = false;
+
+            try
+            {
+                Incluir_Sem_Endereco_Sem_Telefone();
+                Incluir_Com_Endereco_Sem_Telefone();
+                Incluir_Sem_Endereco_Com_Telefone();
+                Incluir_Com_Endereco_Com_Telefone();
+            }
+            catch (Exception e)
+            {
+                erro = true;
+                throw new Exception("Erro ao fazer a carga inicial" + e.Message);
+            }
+            return !erro;
+        }
+
+        [Test]
+        public void a_Incluir_Sem_Endereco_Sem_Telefone()
+        {
+            _professor = Incluir_Sem_Endereco_Sem_Telefone();
+            _professorRecuperado = _repositorio.ObterPorID(_professor.ID);
+            Assert.AreSame(_professor, _professorRecuperado);
+        }
+
+        [Test]
+        public void b_Incluir_Com_Endereco_Sem_Telefone()
+        {
+            _professor = Incluir_Com_Endereco_Sem_Telefone();
+            _professorRecuperado = _repositorio.ObterPorID(_professor.ID);
+            Assert.AreSame(_professor, _professorRecuperado);
+        }
+
+        [Test]
+        public void c_Incluir_Sem_Endereco_Com_Telefone()
+        {
+            _professor = Incluir_Sem_Endereco_Com_Telefone();
+
+            _professorRecuperado = _repositorio.ObterPorID(_professor.ID);
+            Assert.AreSame(_professor, _professorRecuperado);
+        }
+
+        [Test]
+        public void d_Incluir_Com_Endereco_Com_Telefone()
+        {
+            _professor = Incluir_Com_Endereco_Com_Telefone();
+            _professorRecuperado = _repositorio.ObterPorID(_professor.ID);
+            Assert.AreSame(_professor, _professorRecuperado);
         }
     }
 }

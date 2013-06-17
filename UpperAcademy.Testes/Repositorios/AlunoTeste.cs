@@ -12,92 +12,68 @@ namespace UpperAcademy.Testes.Repositorios
     [TestFixture]
     public class AlunoTeste
     {
-        Aluno aluno;
-        Aluno alunoRecuperado;
+        Aluno _aluno;
+        Aluno _alunoRecuperado;
         RepositorioGenerico<Aluno> repositorio;
-        String _id_aluno;
-
         
         public AlunoTeste()
         {
             repositorio = new RepositorioGenerico<Aluno>();
         }
 
-        public void Incluir_Alunos()
+        private Aluno Incluir_Aluno_Sem_Endereco_Sem_Telefone()
         {
-            aluno = new Aluno();
-            _id_aluno = aluno.ID;
-            aluno.Nome = "Joel Amoras Dias";
-            aluno.Data_Nascimento = DateTime.Parse("08/12/1976");
-            repositorio.Atualizar(aluno);
-            /********************************************************************/
-            aluno = new Aluno();
-            _id_aluno = aluno.ID;
-            aluno.Nome = "Paulo Silva Doria";
-            aluno.Data_Nascimento = DateTime.Parse("25/03/1971");
-            repositorio.Atualizar(aluno);
-        }
-        
+            Aluno aluno = new Aluno();
 
-        [Test]
-        public void a_Incluir_Aluno_Sem_Endereco_Sem_Telefone()
-        {
-            aluno = new Aluno();
-            _id_aluno = aluno.ID;
-            aluno.Nome="Jose Henrique de Souza";
+            aluno.Nome = "Jose Henrique de Souza";
             aluno.Data_Nascimento = DateTime.Parse("08/12/1976"); ;
 
-            repositorio.Atualizar(aluno);
-
-            alunoRecuperado = repositorio.ObterPorID(_id_aluno);
-            Assert.AreSame(aluno,alunoRecuperado);
+            repositorio.Adicionar(aluno);
+            return aluno;
         }
 
-        [Test]
-        public void b_Incluir_Aluno_Com_Endereco_Sem_Telefone()
+        private Aluno Incluir_Aluno_Com_Endereco_Sem_Telefone()
         {
-            aluno = new Aluno();
-            _id_aluno = aluno.ID;
-            aluno.Nome = "Amarildo Cardoso";
-            aluno.Data_Nascimento = DateTime.Parse("22/09/1961");
+            Aluno aluno = new Aluno();
+
+            aluno.Nome = "Leticia Dutra";
+            aluno.Data_Nascimento = DateTime.Parse("11/06/1974");
 
             EnderecoAluno endereco = new EnderecoAluno(aluno);
-            endereco.Logradouro="Rodovia Amaral Peixoto";
-            endereco.Numero = "772";
-            endereco.Complemento = "Casa 10";
-            endereco.Bairro = "Centro";
-            endereco.Cidade = "Marica";
+            endereco.Logradouro = "Rua Santa Alexandrina";
+            endereco.Numero = "82";
+            endereco.Complemento = "Apto 203";
+            endereco.Bairro = "Rio Comprido";
+            endereco.Cidade = "Rio de Janeiro";
             endereco.UF = "RJ";
-            endereco.CEP = "20009-110";
+            endereco.CEP = "23412-138";
             aluno.DefinirEndereco(endereco);
 
-            repositorio.Atualizar(aluno);
-            alunoRecuperado = repositorio.ObterPorID(_id_aluno);
-            Assert.AreSame(aluno, alunoRecuperado);
+            repositorio.Adicionar(aluno);
+
+            return aluno;
         }
 
-        [Test]
-        public void c_Incluir_Aluno_Sem_Endereco_Com_Telefone()
+        private Aluno Incluir_Aluno_Sem_Endereco_Com_Telefone()
         {
-            aluno = new Aluno();
-            _id_aluno = aluno.ID;
+            Aluno aluno = new Aluno();
+
             aluno.Nome = "Thiago Ferreira";
             aluno.Data_Nascimento = DateTime.Parse("11/03/1980");
 
-            aluno.AdicionarTelefone(1, "21-2133-7577");
-            aluno.AdicionarTelefone(2, "21-8880-3351");
-            aluno.AdicionarTelefone(2, "21-7811-2633");
+            aluno.DefinirTelefoneResidencial("21-2133-7577");
+            aluno.DefinirTelefoneComercial("21-2880-3351");
+            aluno.DefinirTelefoneCelular("21-7811-2633");
 
-            repositorio.Atualizar(aluno);
-            alunoRecuperado = repositorio.ObterPorID(_id_aluno);
-            Assert.AreSame(aluno, alunoRecuperado);
+            repositorio.Adicionar(aluno);
+
+            return aluno;
         }
 
-        [Test]
-        public void d_Incluir_Aluno_Com_Endereco_Com_Telefone()
+        private Aluno Incluir_Aluno_Com_Endereco_Com_Telefone()
         {
-            aluno = new Aluno();
-            _id_aluno = aluno.ID;
+            Aluno aluno = new Aluno();
+
             aluno.Nome = "William Rego";
             aluno.Data_Nascimento = DateTime.Parse("13/02/1979");
 
@@ -110,12 +86,81 @@ namespace UpperAcademy.Testes.Repositorios
             endereco.UF = "RJ";
             endereco.CEP = "22449-122";
             aluno.DefinirEndereco(endereco);
-            aluno.AdicionarTelefone(1, "21-3977-7587");
-            aluno.AdicionarTelefone(2, "21-9987-0922");
+            
+            aluno.DefinirTelefoneResidencial("21-3977-7587");
+            aluno.DefinirTelefoneCelular("21-9987-0922");
 
-            repositorio.Atualizar(aluno);
-            alunoRecuperado = repositorio.ObterPorID(_id_aluno);
-            Assert.AreSame(aluno, alunoRecuperado);
+            repositorio.Adicionar(aluno);
+
+            return aluno;
+        }
+
+        public Boolean Carga_Inicial()
+        {
+            Boolean erro = false;
+
+            try
+            {
+                Incluir_Alunos();
+                Incluir_Aluno_Sem_Endereco_Sem_Telefone();
+                Incluir_Aluno_Com_Endereco_Sem_Telefone();
+                Incluir_Aluno_Sem_Endereco_Com_Telefone();
+                Incluir_Aluno_Com_Endereco_Com_Telefone();
+            }
+            catch
+            {
+                erro = true;
+            }
+            return !erro;
+        }
+
+        private void Incluir_Alunos()
+        {
+            Aluno aluno = new Aluno();
+            aluno.Nome = "Joel Amoras Dias";
+            aluno.Data_Nascimento = DateTime.Parse("08/12/1976");
+            repositorio.Adicionar(aluno);
+            /********************************************************************/
+            aluno = new Aluno();
+            aluno.Nome = "Paulo Silva Doria";
+            aluno.Data_Nascimento = DateTime.Parse("25/03/1971");
+            repositorio.Adicionar(aluno);
+            /********************************************************************/
+        }
+        
+
+        [Test]
+        public void a_Incluir_Aluno_Sem_Endereco_Sem_Telefone()
+        {
+            _aluno = Incluir_Aluno_Sem_Endereco_Sem_Telefone();
+
+            _alunoRecuperado = repositorio.ObterPorID(_aluno.ID);
+            Assert.AreSame(_aluno,_alunoRecuperado);
+        }
+
+        [Test]
+        public void b_Incluir_Aluno_Com_Endereco_Sem_Telefone()
+        {
+            _aluno = Incluir_Aluno_Com_Endereco_Sem_Telefone();
+            _alunoRecuperado = repositorio.ObterPorID(_aluno.ID);
+            Assert.AreSame(_aluno, _alunoRecuperado);
+        }
+
+        [Test]
+        public void c_Incluir_Aluno_Sem_Endereco_Com_Telefone()
+        {
+            _aluno = Incluir_Aluno_Sem_Endereco_Com_Telefone();
+
+            _alunoRecuperado = repositorio.ObterPorID(_aluno.ID);
+            Assert.AreSame(_aluno, _alunoRecuperado);
+        }
+
+        [Test]
+        public void d_Incluir_Aluno_Com_Endereco_Com_Telefone()
+        {
+            _aluno = Incluir_Aluno_Com_Endereco_Com_Telefone();
+            _alunoRecuperado = repositorio.ObterPorID(_aluno.ID);
+            Assert.AreSame(_aluno, _alunoRecuperado);
         }
     }
 }

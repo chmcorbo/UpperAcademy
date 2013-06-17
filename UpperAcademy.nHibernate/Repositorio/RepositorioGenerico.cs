@@ -29,6 +29,8 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
             ITransaction transaction = Session.BeginTransaction();
             try
             {
+                Session.Clear(); // Ver isso com o Coelho
+                //Session.Evict(pEntidadeBase);
                 Session.SaveOrUpdate(pEntidadeBase);
                 transaction.Commit();
             }
@@ -70,12 +72,25 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
 
         public IQueryable<T> ListarTudo()
         {
-            return Session.CreateCriteria(typeof(T)).List<T>().AsQueryable();
+            ITransaction transaction = Session.BeginTransaction();
+            IQueryable<T> lista = null;
+            try
+            {
+                lista = Session.CreateCriteria(typeof(T)).List<T>().AsQueryable();
+                transaction.Commit();
+            }
+            catch (Exception e)
+            {
+                transaction.Rollback();
+                throw new Exception("Erro na execução da consulta. " + Environment.NewLine + e.Message);
+            }
+            
+            return lista;
         }
 
         public T ObterPorID(String pID)
         {
-            IQueryOver<T> queryOver = _session.QueryOver<T>().Where(t => t.ID == pID);
+            IQueryOver<T> queryOver = Session.QueryOver<T>().Where(t => t.ID == pID);
             return queryOver.List<T>().FirstOrDefault();
         }
     }

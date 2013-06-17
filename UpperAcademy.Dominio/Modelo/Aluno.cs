@@ -11,7 +11,9 @@ namespace UpperAcademy.Dominio.Modelo
         public virtual String Nome { get; set; }
         public virtual DateTime? Data_Nascimento { get; set; }
         public virtual EnderecoAluno Endereco { get; set; }
-        public virtual IList<TelefoneAluno> Telefones { get; set; }
+        public virtual TelefoneAluno TelefoneResidencial { get; set; }
+        public virtual TelefoneAluno TelefoneComercial { get; set; }
+        public virtual TelefoneAluno TelefoneCelular { get; set; }
         public virtual StatusAluno Status { get; set; }
 
         public virtual void StatusCadastrado()
@@ -26,32 +28,38 @@ namespace UpperAcademy.Dominio.Modelo
 
         public Aluno()
         {
-            Telefones = new List<TelefoneAluno>();
             StatusCadastrado();
         }
 
-        private TelefoneAluno ExisteTelefone(Int32 pTipoTelefone, String pNumero)
+        public virtual void CriarTelefonesPadrao()
         {
-            return Telefones.Where(t => t.TipoTelefone == pTipoTelefone && t.Numero == pNumero).FirstOrDefault();
+            TelefoneResidencial = new TelefoneAluno(this, 1, "");
+            TelefoneComercial = new TelefoneAluno(this, 2, "");
+            TelefoneCelular = new TelefoneAluno(this, 3, "");
         }
 
-
-        public virtual void AdicionarTelefone(Int16 pTipoTelefone, String pNumero)
+        public virtual void DefinirTelefoneResidencial(String pNumero)
         {
-            if (ExisteTelefone(pTipoTelefone,pNumero) !=null)
-                throw new Exception("Telefone já adicionado para o aluno");
+            if (TelefoneResidencial == null)
+                TelefoneResidencial = new TelefoneAluno(this, 1, pNumero);
             else
-            {
-                TelefoneAluno telefone = new TelefoneAluno(this,pTipoTelefone,pNumero);
-                Telefones.Add(telefone);
-            }
+                TelefoneResidencial.Numero = pNumero;
         }
 
-        public virtual void RemoverTelefone(Int32 pTipoTelefone, String pNumero)
+        public virtual void DefinirTelefoneComercial(String pNumero)
         {
-            TelefoneAluno telefone = ExisteTelefone(pTipoTelefone, pNumero);
-            if (telefone!=null)
-                Telefones.Remove(telefone);
+            if (TelefoneComercial == null)
+                TelefoneComercial = new TelefoneAluno(this, 2, pNumero);
+            else
+                TelefoneComercial.Numero = pNumero;
+        }
+
+        public virtual void DefinirTelefoneCelular(String pNumero)
+        {
+            if (TelefoneCelular == null)
+                TelefoneCelular = new TelefoneAluno(this,3,pNumero);
+            else
+                TelefoneCelular.Numero = pNumero;
         }
 
         public virtual void DefinirEndereco(EnderecoAluno pEndereco)

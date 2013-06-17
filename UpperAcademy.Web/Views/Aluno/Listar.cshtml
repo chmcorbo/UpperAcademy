@@ -14,7 +14,7 @@
 <body>
   <h1> Lista de alunos</h1>
     <p>
-        @Html.ActionLink("Novo", "Create")
+        @Html.ActionLink("Novo", "Adicionar")
     </p>
     <table>
         <tr>
@@ -22,12 +22,14 @@
                 @Html.DisplayNameFor(model => model.Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Data_Nascimento)
+                Data de Nascimento
             </th>
-            <th></th>
+            <th>
+                Operações
+            </th>
         </tr>
     
-    @foreach (var item in Model) {
+    @foreach (var item in Model.OrderBy(n => n.Nome)) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Nome)
@@ -36,9 +38,9 @@
                 @Html.DisplayFor(modelItem => item.Data_Nascimento)
             </td>
             <td>
-                @Html.ActionLink("Editar", "Edit", new { id=item.ID }) |
-                @Html.ActionLink("Detalhes", "Details", new { id=item.ID }) |
-                @Html.ActionLink("Excluir", "Delete", new { id=item.ID })
+                @Html.ActionLink("Editar", "Editar", new { id=item.ID }) |
+                @Html.ActionLink("Detalhes", "Detalhar", new { id=item.ID }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id=item.ID })
             </td>
         </tr>
     }

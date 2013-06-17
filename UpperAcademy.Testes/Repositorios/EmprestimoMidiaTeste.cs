@@ -38,7 +38,7 @@ namespace UpperAcademy.Testes.Repositorios
         public void Emprestar_Midia()
         {
             midiaTeste.Incluir_Midias();
-            alunoTeste.Incluir_Alunos();
+            //alunoTeste.Incluir_Alunos(); refatorar
             midia = repositorioMidia.ListarTudo().FirstOrDefault();
             Int32 Qtde_Disponivel = midia.Qtde_Disponivel;
 

@@ -14,10 +14,15 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
         {
             Id(a => a.ID).Length(40);
             Map(a => a.Nome).Length(50);
-            Map(a => a.Data_Nascimento).Column("Dt_Nascimento");
-            Map(a => a.Status);
+            Map(a => a.Data_Nascimento).Column("Dt_Nascimento").CustomType("date");
+            Map(a => a.Status).Length(10);
+
             References(e => e.Endereco).Column("Id_Endereco").Cascade.All();
-            HasMany(t => t.Telefones).Cascade.All();
+            References(t1 => t1.TelefoneResidencial).Column("Id_Telefone_Res").Cascade.All();
+            References(t2 => t2.TelefoneComercial).Column("Id_Telefone_Com").Cascade.All();
+            References(t3 => t3.TelefoneCelular).Column("Id_Telefone_Cel").Cascade.All();
+            
+            //HasMany(t => t.Telefones).Cascade.All();
             Table("TB_ALUNO");
         }
     }

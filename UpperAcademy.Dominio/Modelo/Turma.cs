@@ -12,7 +12,6 @@ namespace UpperAcademy.Dominio.Modelo
         private DateTime? _data_inicio;
         private DateTime? _data_fim;
 
-        public virtual Int32 Nivel { get; set; }
         public virtual DateTime? Data_inicio
         {
             get { return _data_inicio; }
@@ -31,6 +30,8 @@ namespace UpperAcademy.Dominio.Modelo
                 SetStatus();
             }
         }
+        
+        public virtual Int32 Nivel { get; set; }
         public virtual Professor Professor {get; set; }
         public virtual IList<Aluno> Alunos { get; set; }
         public virtual StatusTurma Status

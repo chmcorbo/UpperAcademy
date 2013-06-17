@@ -10,6 +10,9 @@ namespace UpperAcademy.Testes.Repositorios
     [TestFixture]
     public class BancoTeste
     {
+        AlunoTeste alunoTeste;
+        ProfessorTeste professorTeste;
+
         public BancoTeste()
         {
         }
@@ -17,8 +20,19 @@ namespace UpperAcademy.Testes.Repositorios
         [Test]
         public void GerarBanco()
         {
-            Assert.IsTrue(Banco.gerarBanco());
+            Assert.IsTrue(Banco.CriarBancoDeDados());
         }
+
+        [Test]
+        public void CargaDadosInicial()
+        {
+            alunoTeste = new AlunoTeste();
+            professorTeste = new ProfessorTeste();
+
+            Assert.IsTrue(alunoTeste.Carga_Inicial());
+            Assert.IsTrue(professorTeste.Carga_Inicial());
+        }
+
 
     }
 }

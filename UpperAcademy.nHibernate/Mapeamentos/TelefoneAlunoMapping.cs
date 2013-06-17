@@ -15,7 +15,7 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
             Map(t => t.TipoTelefone).Column("Tipo");
             Map(t => t.Numero).Length(12);
 
-            References(a => a.Aluno).Cascade.None(); 
+            // References(a => a.Aluno).Cascade.None(); 
             Table("TB_TELEFONE_ALUNO");
         }
     }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UpperAcademy.Dominio.Enumerados;
 
 namespace UpperAcademy.Dominio.Modelo
 {
@@ -9,43 +10,50 @@ namespace UpperAcademy.Dominio.Modelo
     {
         public virtual String Nome { get; set; }
         public virtual DateTime Data_Nascimento { get; set; }
-        public virtual Int32 Nivel { get; set; }
+        public virtual cNivel Nivel { get; set; }
         public virtual EnderecoProfessor Endereco { get; set; }
         public virtual IList<TelefoneProfessor> Telefones { get; set; }
+        public virtual TelefoneProfessor TelefoneResidencial { get; set; }
+        public virtual TelefoneProfessor TelefoneComercial { get; set; }
+        public virtual TelefoneProfessor TelefoneCelular { get; set; }
+        public virtual StatusProfessor Status {get; set;}
+
 
         public Professor()
         {
             Telefones = new List<TelefoneProfessor>();
-        }
-
-        private TelefoneProfessor ExisteTelefone(Int32 pTipoTelefone, String pNumero)
-        {
-            return Telefones.Where(t => t.TipoTelefone == pTipoTelefone && t.Numero == pNumero).FirstOrDefault();
+            Nivel = cNivel.Basico;
         }
 
 
-        public virtual void AdicionarTelefone(Int16 pTipoTelefone, String pNumero)
+        public virtual void DefinirTelefoneResidencial(String pNumero)
         {
-            if (ExisteTelefone(pTipoTelefone, pNumero) != null)
-                throw new Exception("Telefone já adicionado para o aluno");
+            if (TelefoneResidencial == null)
+                TelefoneResidencial = new TelefoneProfessor(this, 1, pNumero);
             else
-            {
-                TelefoneProfessor telefone = new TelefoneProfessor(this, pTipoTelefone, pNumero);
-                Telefones.Add(telefone);
-            }
+                TelefoneResidencial.Numero = pNumero;
         }
 
-        public virtual void RemoverTelefone(Int32 pTipoTelefone, String pNumero)
+        public virtual void DefinirTelefoneComercial(String pNumero)
         {
-            TelefoneProfessor telefone = ExisteTelefone(pTipoTelefone, pNumero);
-            if (telefone != null)
-                Telefones.Remove(telefone);
+            if (TelefoneComercial == null)
+                TelefoneComercial = new TelefoneProfessor(this, 2, pNumero);
+            else
+                TelefoneComercial.Numero = pNumero;
+        }
+
+        public virtual void DefinirTelefoneCelular(String pNumero)
+        {
+            if (TelefoneCelular == null)
+                TelefoneCelular = new TelefoneProfessor(this, 3, pNumero);
+            else
+                TelefoneCelular.Numero = pNumero;
         }
 
         public virtual void DefinirEndereco(EnderecoProfessor pEndereco)
         {
             if (pEndereco.Professor != this)
-                throw new Exception("Referência de aluno em endereço não é válida. ");
+                throw new Exception("Referência de professor em endereço não é válida. ");
             Endereco = pEndereco;
         }
 

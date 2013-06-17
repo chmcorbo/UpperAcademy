@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NHibernate;
 
 namespace UpperAcademy.Persistence.nHibernate.Repositorio
 {
     public class Banco
     {
-        public static bool gerarBanco()
+        public static Boolean CriarBancoDeDados()
         {
+            Boolean _erro = false;
             try
             {
-                FluentSessionFactory.AbrirSession(true);
-                return true;
+                HybridSessionBuilder _builder = new HybridSessionBuilder(true);
+                _builder.GetSession();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return false;
+                _erro = true;
+                throw new Exception("Erro na criação do banco de dados. " + Environment.NewLine + e.Message);
             }
+            return !_erro;
         }
-
     }
 }

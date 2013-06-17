@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntidadeBase.cs" />
+    <Compile Include="Enumerados\Nivel.cs" />
     <Compile Include="Enumerados\StatusAluno.cs" />
     <Compile Include="Enumerados\StatusProfessor.cs" />
     <Compile Include="Enumerados\StatusTurma.cs" />

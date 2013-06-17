@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using FluentNHibernate.Conventions;
@@ -16,6 +17,13 @@ namespace UpperAcademy.Persistence.nHibernate
     {
         private static ISession _currentSession;
         private static ISessionFactory _sessionFactory;
+        private static Boolean _criarBanco;
+
+        public HybridSessionBuilder(Boolean pCriarBanco = false)
+        {
+            _criarBanco = pCriarBanco;
+        }
+
 
         public ISession GetSession()
         {
@@ -66,16 +74,20 @@ namespace UpperAcademy.Persistence.nHibernate
         {
             config.SetProperty("current_session_context_class", "thread_static");
 
-            new SchemaExport(config)
-                .Drop(true, true);
+            if (_criarBanco)
+            {
+                new SchemaExport(config)
+                    .Drop(true, true);
 
-            new SchemaExport(config)
-                .Create(true, true);
+                new SchemaExport(config)
+                    .Create(true, true);
+            }
         }
 
         public static void ResetSession()
         {
             var builder = new HybridSessionBuilder();
+            
             //builder.GetSession().Dispose();
 
             ISession currentSession = CurrentSessionContext.Unbind(builder.GetSessionFactory());
