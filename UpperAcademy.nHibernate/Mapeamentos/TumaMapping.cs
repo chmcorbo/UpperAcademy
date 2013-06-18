@@ -12,10 +12,9 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
         public TumaMapping()
         {
             Id(t => t.ID).Length(40);
-            Map(t => t.Nivel).Length(20);
+            Map(t => t.Nivel).CustomType("smallint");
             Map(t => t.Data_inicio).Column("Dt_Inicio");
             Map(t => t.Data_fim).Column("Dt_Fim");
-            Map(t => t.Status).Length(10);
             References(t => t.Professor).Column("Id_Professor").Cascade.All();
             HasManyToMany(t => t.Alunos).Table("TB_ALUNO_TURMA");
             Table("TB_TURMA");

@@ -62,6 +62,9 @@
     <Compile Include="Repositorios\IRepositorioGenerico.cs" />
     <Compile Include="Servicos\IServDevolverMidia.cs" />
     <Compile Include="Servicos\IServEmprestarMidia.cs" />
+    <Compile Include="Servicos\ServListaFixa.cs" />
+    <Compile Include="Servicos\ServListaFixaNivel.cs" />
+    <Compile Include="Servicos\ServListaFixaStatusTurma.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,8 +7,8 @@ namespace UpperAcademy.Dominio.Enumerados
 {
     public enum StatusTurma
     {
-        Aberta,
-        EmAndamento,
-        Encerrada
+        Aberta = 1,
+        EmAndamento = 2,
+        Encerrada = 3
     }
 }

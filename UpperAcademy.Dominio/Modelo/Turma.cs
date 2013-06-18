@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UpperAcademy.Dominio.Enumerados;
+using UpperAcademy.Dominio.Servicos;
+
 
 namespace UpperAcademy.Dominio.Modelo
 {
     public class Turma : EntidadeBase
     {
-        private StatusTurma _status;
         private DateTime? _data_inicio;
         private DateTime? _data_fim;
+        private ServListaFixaStatusTurma _ServListaFixaStatusTurma;
 
         public virtual DateTime? Data_inicio
         {
@@ -31,28 +33,24 @@ namespace UpperAcademy.Dominio.Modelo
             }
         }
         
-        public virtual Int32 Nivel { get; set; }
+        public virtual Int16 Nivel { get; set; }
         public virtual Professor Professor {get; set; }
         public virtual IList<Aluno> Alunos { get; set; }
-        public virtual StatusTurma Status
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
+        public virtual String Status {get; protected set;}
 
         public Turma()
         {
             Alunos = new List<Aluno>();
-            _status = StatusTurma.Aberta;
+            _ServListaFixaStatusTurma = new ServListaFixaStatusTurma();
+            Status = _ServListaFixaStatusTurma.ObterPelaChave(1);
         }
 
         protected virtual void SetStatus()
         {
             if (DateTime.Now.Date >= _data_inicio && DateTime.Now.Date <= _data_fim)
-                _status = StatusTurma.EmAndamento;
+                Status = _ServListaFixaStatusTurma.ObterPelaChave(2);
             else if (DateTime.Now.Date >= _data_fim)
-                _status = StatusTurma.Encerrada;
+                Status = _ServListaFixaStatusTurma.ObterPelaChave(3);
         }
-
     }
 }
