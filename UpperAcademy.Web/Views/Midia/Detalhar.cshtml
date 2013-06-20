@@ -1,0 +1,41 @@
+﻿@model UpperAcademy.Dominio.Modelo.Midia
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhes Mídia</title>
+</head>
+<body>
+    <h1> Detalhes da mídia </h1>
+    <fieldset>
+        <legend>Detalhes Mídia</legend>
+    
+        <div class="display-label">
+             Descrição: @Html.DisplayFor(model => model.Descricao)
+        </div>
+    
+        <div class="display-label">
+             Autor: @Html.DisplayFor(model => model.Autor)
+        </div>
+    
+        <div class="display-label">
+             Qtde Cópias: @Html.DisplayFor(model => model.Qtde_Copias)
+        </div>
+    
+        <div class="display-label">
+             Qtde Disponível:  @Html.DisplayFor(model => model.Qtde_Disponivel)
+        </div>
+
+    </fieldset>
+    <p>
+        @Html.ActionLink("Editar", "Editar", new { id=Model.ID }) |
+        @Html.ActionLink("Voltar", "Listar")
+    </p>
+</body>
+</html>

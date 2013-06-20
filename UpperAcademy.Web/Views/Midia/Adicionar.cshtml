@@ -1,0 +1,56 @@
+﻿@model UpperAcademy.Dominio.Modelo.Midia
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Adicionar nova mídia </title>
+</head>
+<body>
+   <h1> Adicionar nova mídia </h1>
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>Midia</legend>
+    
+            <div class="editor-label">
+                Descrição
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Descricao)
+                @Html.ValidationMessageFor(model => model.Descricao)
+            </div>
+    
+            <div class="editor-label">
+                Autor
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Autor)
+                @Html.ValidationMessageFor(model => model.Autor)
+            </div>
+    
+            <div class="editor-label">
+                Qtde Cópias
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Qtde_Copias)
+                @Html.ValidationMessageFor(model => model.Qtde_Copias)
+            </div>
+    
+            <p>
+                <input type="submit" value="Salvar" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Voltar", "Listar")
+    </div>
+</body>
+</html>

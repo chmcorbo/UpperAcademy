@@ -1,0 +1,64 @@
+﻿@model IEnumerable<UpperAcademy.Dominio.Modelo.Professor>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listar Professores</title>
+
+    <script type="text/javascript">
+        function redirecionar() 
+        {
+           window.location = "../Home/Index";
+        }
+
+        function adicionar() 
+        {
+           window.location = "../Professor/Adicionar";
+        }
+    </script>
+
+</head>
+<body>
+    <h1> Lista de professores </h1>
+    <p>
+        <input type="button" value="Voltar" onclick="redirecionar();" />
+        <button onclick="adicionar();">  Novo  </button>
+    </p>
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                Data de Nascimento
+            </th>
+            <th>
+                Operações
+            </th>
+        </tr>
+    
+    @foreach (var item in Model.OrderBy(n => n.Nome)) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Nascimento)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id=item.ID }) |
+                @Html.ActionLink("Detalhes", "Detalhar", new { id=item.ID }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id=item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

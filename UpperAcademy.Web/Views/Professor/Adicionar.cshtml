@@ -1,0 +1,127 @@
+﻿@model UpperAcademy.Dominio.Modelo.Professor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+   <h1> @ViewBag.Head1 </h1>
+
+    @using (Html.BeginForm()) {
+        
+    
+    <fieldset>
+        <legend>Professor</legend>
+    
+        <div class="editor-label">
+            Nome:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            Data de nascimento: 
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Data_Nascimento)
+        </div>
+
+
+        <h3>
+            Endereço
+        </h3>
+
+
+        <div class="editor-label">
+            Logradouro:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco.Logradouro)
+        </div>
+
+        <div class="editor-label">
+            Numero: 
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco.Numero)
+        </div>
+
+        <div class="editor-label">
+            Complemento:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco.Complemento)
+        </div>
+
+        <div class="editor-label">
+            Bairro:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco.Bairro)
+        </div>
+
+        <div class="editor-label">
+            Cidade:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco.Cidade)
+        </div>
+    
+        <div class="editor-label">
+            UF:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco.UF)
+        </div>
+
+        <div class="editor-label">
+            CEP:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Endereco.CEP)
+        </div>
+            
+        <h3>
+            Contato
+        </h3>
+
+        <div class="editor-label">
+            Telefone Residencial
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TelefoneResidencial.Numero )
+        </div>
+
+        <div class="editor-label">
+            Telefone Comercial
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TelefoneComercial.Numero)
+        </div>
+
+        <div class="editor-label">
+            Telefone Celular
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TelefoneCelular.Numero)
+        </div>
+        <p>
+            <input type="submit" value="Salvar" />
+        </p>
+    </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Voltar", "Listar")
+    </div>
+</body>
+</html>

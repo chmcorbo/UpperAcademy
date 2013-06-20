@@ -141,6 +141,9 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MidiaController.cs" />
+    <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,7 +262,40 @@
     <Content Include="Views\Aluno\Adicionar.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Professor\Adicionar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Professor\Listar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Professor\Detalhar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Midia\Listar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Midia\Adicionar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Midia\Editar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\Aluno\Detalhar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Midia\Detalhar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turma\Listar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turma\Editar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turma\Adicionar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Turma\Detalhar.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

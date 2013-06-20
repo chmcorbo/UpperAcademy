@@ -1,0 +1,87 @@
+﻿@model UpperAcademy.Dominio.Modelo.Professor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+   <h1> Detalhes do professor </h1>
+    <fieldset>
+        <legend>Professor</legend>
+    
+                <div class="display-label">
+             Nome: @Html.DisplayFor(model => model.Nome)
+        </div>
+    
+        <div class="display-label">
+             Data de Nascimento: @Html.DisplayFor(model => model.Data_Nascimento)
+        </div>
+
+        <h3>
+          Endereço
+        </h3>
+
+
+        <div class="editor-label">
+            Logradouro: @Html.DisplayFor(model => model.Endereco.Logradouro)
+        </div>
+
+        <div class="editor-label">
+            Numero: @Html.DisplayFor(model => model.Endereco.Numero)
+        </div>
+
+        <div class="editor-label">
+            Complemento: @Html.DisplayFor(model => model.Endereco.Complemento)
+        </div>
+
+        <div class="editor-label">
+            Bairro: @Html.DisplayFor(model => model.Endereco.Bairro)
+        </div>
+
+        <div class="editor-label">
+            Cidade: @Html.DisplayFor(model => model.Endereco.Cidade)
+        </div>
+    
+        <div class="editor-label">
+            UF: @Html.DisplayFor(model => model.Endereco.UF)
+        </div>
+
+        <div class="editor-label">
+            CEP: @Html.DisplayFor(model => model.Endereco.CEP)
+        </div>
+            
+        <h3>
+            Contato
+        </h3>
+
+        <div class="editor-label">
+            Telefone Residencial: @Html.DisplayFor(model => model.TelefoneResidencial.Numero)
+        </div>
+
+        <div class="editor-label">
+            Telefone Comercial: @Html.DisplayFor(model => model.TelefoneComercial.Numero)
+        </div>
+
+        <div class="editor-label">
+            Telefone Celular: @Html.DisplayFor(model => model.TelefoneCelular.Numero)
+        </div>
+
+        <h4>
+          <div>
+             Status: @Html.DisplayFor(model => model.Descricao_Status) 
+          </div>
+        </h4>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Editar", "Editar", new { id=Model.ID }) |
+        @Html.ActionLink("Voltar", "Listar")
+    </p>
+</body>
+</html>

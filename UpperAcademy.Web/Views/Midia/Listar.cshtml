@@ -1,0 +1,76 @@
+﻿@model IEnumerable<UpperAcademy.Dominio.Modelo.Midia>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listar</title>
+
+    <script type="text/javascript">
+        function redirecionar() {
+            window.location = "../Home/Index";
+        }
+        
+        function adicionar() {
+
+            window.location = "../Midia/Adicionar";
+         }
+      
+    </script>
+
+
+</head>
+<body>
+    <h1> Lista de mídias</h1>
+    <p>
+       <button onclick="redirecionar();">  Voltar  </button> 
+       <button onclick="adicionar();">  Novo  </button>
+    </p>
+    <table>
+        <tr>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Autor
+            </th>
+            <th>
+                Qtde Cópias
+            </th>
+            <th>
+                Disponível
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtde_Copias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtde_Disponivel)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Editar", new { id = item.ID }) |
+                @Html.ActionLink("Detalhar", "Detalhar", new { id = item.ID }) |
+                @Html.ActionLink("Excluir", "Excluir", new { id = item.ID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

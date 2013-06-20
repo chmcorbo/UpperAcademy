@@ -9,12 +9,25 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Alunos</title>
+    <title>Listagem de alinos</title>
+
+    <script type="text/javascript">
+        function redirecionar() {
+            window.location = "../Home/Index";
+        }
+        
+        function adicionar() {
+            window.location = "../Aluno/Adicionar";
+        }
+    </script>
+
 </head>
+
 <body>
   <h1> Lista de alunos</h1>
     <p>
-        @Html.ActionLink("Novo", "Adicionar")
+       <button onclick="redirecionar();">  Voltar  </button> 
+       <button onclick="adicionar();">  Novo  </button>
     </p>
     <table>
         <tr>

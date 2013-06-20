@@ -7,11 +7,15 @@
 <!DOCTYPE html>
 
 <html>
+
+
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Adicionar Aluno</title>
 </head>
 <body>
+   <h1> @ViewBag.Head1 </h1>
+
     @using (Html.BeginForm()) {
         @Html.ValidationSummary(true)
     
@@ -95,7 +99,6 @@
               Telefone Residencial
             </div>
             <div class="editor-field">
-              @Html.DisplayFor(model => model.TelefoneResidencial.Aluno.ID)
               @Html.EditorFor(model => model.TelefoneResidencial.Numero )
             </div>
 
@@ -103,7 +106,6 @@
               Telefone Comercial
             </div>
             <div class="editor-field">
-              @Html.DisplayFor(model => model.TelefoneComercial.Aluno.ID)
               @Html.EditorFor(model => model.TelefoneComercial.Numero)
             </div>
 
@@ -111,7 +113,6 @@
               Telefone Celular
             </div>
             <div class="editor-field">
-              @Html.DisplayFor(model => model.TelefoneCelular.Aluno.ID)
               @Html.EditorFor(model => model.TelefoneCelular.Numero)
             </div>
             <p>
