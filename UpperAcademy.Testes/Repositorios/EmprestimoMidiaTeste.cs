@@ -21,6 +21,7 @@ namespace UpperAcademy.Testes.Repositorios
         private RepositorioGenerico<Midia> repositorioMidia;
 
         private IServEmprestarMidia servEmprestarMidia;
+        private IServDevolverMidia servDevolverMidia;
 
         public EmprestimoMidiaTeste()
         {
@@ -49,6 +50,40 @@ namespace UpperAcademy.Testes.Repositorios
             Midia midiaRecuperada = repositorioMidia.ObterPorID(midia.ID);
 
             Assert.AreEqual(Qtde_Disponivel - 1, midiaRecuperada.Qtde_Disponivel);
+        }
+
+        [Test]
+        public void Devolver_Midia()
+        {
+
+            midia = repositorioMidia.ListarTudo().FirstOrDefault();
+
+            if (midia == null)
+            {
+                midiaTeste.Incluir_Midias();
+                midia = repositorioMidia.ListarTudo().FirstOrDefault();
+            }
+
+            Int32 Qtde_Disponivel = midia.Qtde_Disponivel;
+
+            EmprestimoMidia emprestimoMidia = repositorioEmprestimoMidia.ListarEmprestimos().FirstOrDefault();
+
+            if (emprestimoMidia == null)
+            {
+                servEmprestarMidia = new ServEmprestarMidia().Executar(midia,
+                    repositorioAluno.ListarTudo().FirstOrDefault(),
+                DateTime.Now.AddDays(-10));
+                emprestimoMidia = repositorioEmprestimoMidia.ListarEmprestimos().FirstOrDefault();
+            }
+
+            servDevolverMidia = new ServDevolverMidia().Executar(emprestimoMidia.Midia.ID, DateTime.Now);
+
+            EmprestimoMidia emprestimoRecuperado = repositorioEmprestimoMidia.ObterPorID(emprestimoMidia.ID);
+            Midia midiaDevolvida = repositorioMidia.ObterPorID(emprestimoRecuperado.Midia.ID);
+
+            Assert.AreEqual(Qtde_Disponivel, midiaDevolvida.Qtde_Disponivel);
+
+            Assert.AreEqual(DateTime.Now.Date, emprestimoRecuperado.Data_Devolucao.Value.Date);
         }
     
 

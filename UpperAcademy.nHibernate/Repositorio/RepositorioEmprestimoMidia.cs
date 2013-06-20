@@ -10,7 +10,7 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
 {
     public class RepositorioEmprestimoMidia : RepositorioGenerico<EmprestimoMidia>, IRepositorioEmprestimoMidia
     {
-        public IList<EmprestimoMidia> ListarMidiasEmprestadas()
+        public IList<EmprestimoMidia> ListarEmprestimos()
         {
             IQueryOver<EmprestimoMidia> queryOver =
                 Session.QueryOver<EmprestimoMidia>().Where(e => e.Data_Devolucao == null);
@@ -18,6 +18,15 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
             IList<EmprestimoMidia> listaEmprestimosMidias = queryOver.List<EmprestimoMidia>();
 
             return listaEmprestimosMidias;
+        }
+
+
+        public EmprestimoMidia ObterEmprestimoMidia(String pId_Midia)
+        {
+            IQueryOver<EmprestimoMidia> queryOver =
+                Session.QueryOver<EmprestimoMidia>().Where(e => e.Midia.ID == pId_Midia && e.Data_Devolucao == null);
+
+            return queryOver.List<EmprestimoMidia>().FirstOrDefault();
         }
     }
 }

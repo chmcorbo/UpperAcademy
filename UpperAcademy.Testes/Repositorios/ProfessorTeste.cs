@@ -26,7 +26,7 @@ namespace UpperAcademy.Testes.Repositorios
             Professor professor = new Professor();
             professor.Nome = "Julio Mirilly";
             professor.Data_Nascimento = DateTime.Parse("08/12/1961");
-            professor.Nivel = cNivel.Intermadiario;
+            professor.Nivel = 2;
             _repositorio.Atualizar(professor);
             return professor;
         }

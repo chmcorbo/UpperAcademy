@@ -10,47 +10,46 @@ namespace UpperAcademy.Dominio.Modelo
 {
     public class Turma : EntidadeBase
     {
-        private DateTime? _data_inicio;
-        private DateTime? _data_fim;
         private ServListaFixaStatusTurma _ServListaFixaStatusTurma;
+        private ServListaFixaNivel _ServListaFixaNivel;
 
-        public virtual DateTime? Data_inicio
-        {
-            get { return _data_inicio; }
-            set 
-            { 
-                _data_inicio = value;
-                SetStatus();
-            }
-        }
-        public virtual DateTime? Data_fim
-        {
-            get { return _data_fim; }
-            set 
-            { 
-                _data_fim = value;
-                SetStatus();
-            }
-        }
-        
+        public virtual DateTime? Data_inicio {get; set;}
+        public virtual DateTime? Data_fim { get; set;}
         public virtual Int16 Nivel { get; set; }
-        public virtual Professor Professor {get; set; }
+        public virtual Professor Professor { get; set;}
         public virtual IList<Aluno> Alunos { get; set; }
-        public virtual String Status {get; protected set;}
+        public virtual String Status
+        {
+            get
+            {
+                return AtualizaStatus();
+            }
+        }
+        public virtual String Descricao_Nivel
+        {
+            get
+            {
+                return _ServListaFixaNivel.ObterPelaChave(Nivel);
+            }
+        }
 
         public Turma()
         {
             Alunos = new List<Aluno>();
             _ServListaFixaStatusTurma = new ServListaFixaStatusTurma();
-            Status = _ServListaFixaStatusTurma.ObterPelaChave(1);
+            _ServListaFixaNivel = new ServListaFixaNivel();
         }
 
-        protected virtual void SetStatus()
+        protected virtual String AtualizaStatus()
         {
-            if (DateTime.Now.Date >= _data_inicio && DateTime.Now.Date <= _data_fim)
-                Status = _ServListaFixaStatusTurma.ObterPelaChave(2);
-            else if (DateTime.Now.Date >= _data_fim)
-                Status = _ServListaFixaStatusTurma.ObterPelaChave(3);
+            String resultado = _ServListaFixaStatusTurma.ObterPelaChave(1);
+
+            if (DateTime.Now.Date >= Data_inicio && DateTime.Now.Date <= Data_fim)
+                resultado = _ServListaFixaStatusTurma.ObterPelaChave(2);
+            else if (DateTime.Now.Date >= Data_fim)
+                resultado = _ServListaFixaStatusTurma.ObterPelaChave(3);
+
+            return resultado;
         }
     }
 }

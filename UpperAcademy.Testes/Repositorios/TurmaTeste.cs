@@ -65,10 +65,10 @@ namespace UpperAcademy.Testes.Repositorios
         private void Incluir_Professores()
         {
             Professor professor = new Professor();
-
+           
             professor.Nome = "Rafael Torah Racile";
             professor.Data_Nascimento = DateTime.Parse("30/04/1966");
-            professor.Nivel =cNivel.Intermadiario;
+            professor.Nivel = 2;
             professor.DefinirTelefoneResidencial("21-2133-7577");
             professor.DefinirTelefoneComercial("21-3977-7587");
             professor.DefinirTelefoneCelular("21-9987-0922");

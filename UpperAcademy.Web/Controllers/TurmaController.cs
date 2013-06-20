@@ -8,7 +8,7 @@ using UpperAcademy.Persistence.nHibernate.Repositorio;
 
 namespace UpperAcademy.Web.Controllers
 {
-    public class TumaController : Controller
+    public class TurmaController : Controller
     {
         //
         // GET: /Tuma/

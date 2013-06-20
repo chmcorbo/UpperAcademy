@@ -14,8 +14,8 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
             Id(p => p.ID).Length(40);
             Map(p => p.Nome).Length(50);
             Map(p => p.Data_Nascimento).Column("Dt_Nascimento").CustomType("date");
-            Map(p => p.Nivel).Length(20);
-            Map(p => p.Status).Length(10);
+            Map(p => p.Nivel);
+            Map(p => p.Status);
 
             References(p => p.Endereco).Column("Id_Endereco").Cascade.All();
             References(t1 => t1.TelefoneResidencial).Column("Id_Telefone_Res").Cascade.All();

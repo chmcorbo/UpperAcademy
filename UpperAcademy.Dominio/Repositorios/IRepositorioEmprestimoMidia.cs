@@ -8,6 +8,7 @@ namespace UpperAcademy.Dominio.Repositorios
 {
     public interface IRepositorioEmprestimoMidia : IRepositorioGenerico<EmprestimoMidia>
     {
-        IList<EmprestimoMidia> ListarMidiasEmprestadas();
+        IList<EmprestimoMidia> ListarEmprestimos();
+        EmprestimoMidia ObterEmprestimoMidia(String pId_Midia);
     }
 }

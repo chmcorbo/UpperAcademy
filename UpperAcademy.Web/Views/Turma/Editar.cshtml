@@ -1,0 +1,110 @@
+﻿@model UpperAcademy.Dominio.Modelo.Turma
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Editar Turma</title>
+</head>
+<body>
+    <h1> Editar turma </h1>
+
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>Turma</legend>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Data_inicio)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Data_inicio)
+                @Html.ValidationMessageFor(model => model.Data_inicio)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Data_fim)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Data_fim)
+                @Html.ValidationMessageFor(model => model.Data_fim)
+            </div>
+    
+            <div class="editor-label">
+                @Html.LabelFor(model => model.Nivel)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Nivel)
+                @Html.ValidationMessageFor(model => model.Nivel)
+            </div>
+    
+            @Html.HiddenFor(model => model.ID)
+    
+        @{
+            if (Model.Professor != null)
+            {
+                    <h4> Professor </h4>
+                    <table>
+                        <tr>
+                            <th>
+                               Codigo: @Html.DisplayFor(professor => Model.Professor.ID)
+                            </th>
+                            <th>
+                               Nome: @Html.DisplayFor(professor => Model.Professor.Nome)
+                            </th>
+                        </tr>
+                    </table>
+            }
+        }
+        
+        </fieldset>
+        <h4> Alunos </h4>
+        
+        <table>
+            <tr>
+                <th>
+                   Matrícula
+                </th>
+                <th>
+                   Nome
+                </th>
+            </tr>
+            @foreach (var itemModel in Model.Alunos) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(aluno => itemModel.Matricula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(aluno => itemModel.Nome)
+                    </td>
+                </tr>
+            }
+
+        
+        </table>
+    }
+    
+    <table>
+    <tr>
+        <th>
+            @Html.ActionLink("Voltar", "Listar")
+        </th>
+        <th>
+            @Html.ActionLink("Alocar Professor", "AlocarProfessor")
+        </th>
+        <th>
+            @Html.ActionLink("Alocar Aluno", "AlocarAluno")
+        </th>
+    </tr>
+    </table>
+    <p>
+        <input type="submit" value="Salvar" />
+    </p>
+</body>
+</html>

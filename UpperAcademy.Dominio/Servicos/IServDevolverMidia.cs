@@ -8,6 +8,6 @@ namespace UpperAcademy.Dominio.Servicos
 {
     public interface IServDevolverMidia
     {
-        Boolean Executar(Midia pMidia, DateTime pDataDevolucao);
+        IServDevolverMidia Executar(String pId_Midia, DateTime pDataDevolucao);
     }
 }

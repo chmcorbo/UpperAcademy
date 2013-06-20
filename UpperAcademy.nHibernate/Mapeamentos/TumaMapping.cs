@@ -12,7 +12,7 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
         public TumaMapping()
         {
             Id(t => t.ID).Length(40);
-            Map(t => t.Nivel).CustomType("smallint");
+            Map(t => t.Nivel);
             Map(t => t.Data_inicio).Column("Dt_Inicio");
             Map(t => t.Data_fim).Column("Dt_Fim");
             References(t => t.Professor).Column("Id_Professor").Cascade.All();

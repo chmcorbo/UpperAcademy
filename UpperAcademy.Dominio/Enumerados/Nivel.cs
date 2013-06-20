@@ -7,8 +7,8 @@ namespace UpperAcademy.Dominio.Enumerados
 {
     public enum cNivel
     {
-        Basico,
-        Intermadiario,
-        Avancado
+        Basico = 1,
+        Intermadiario = 2,
+        Avancado = 3
     }
 }

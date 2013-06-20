@@ -55,16 +55,23 @@
     <Compile Include="Mapeamentos\EmprestimoMidiaMapping.cs" />
     <Compile Include="Mapeamentos\EnderecoAlunoMapping.cs" />
     <Compile Include="Mapeamentos\EnderecoProfessorMapping.cs" />
+    <Compile Include="Mapeamentos\EntidadeSequencialMapping.cs" />
     <Compile Include="Mapeamentos\MidiaMapping.cs" />
     <Compile Include="Mapeamentos\ProfessorMapping.cs" />
     <Compile Include="Mapeamentos\TelefoneAlunoMapping.cs" />
     <Compile Include="Mapeamentos\TelefoneProfessorMapping.cs" />
     <Compile Include="Mapeamentos\TumaMapping.cs" />
+    <Compile Include="Modelo\EntidadeSequencial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\Banco.cs" />
     <Compile Include="Repositorio\RepositorioEmprestimoMidia.cs" />
+    <Compile Include="Repositorio\RepositorioEntidadeSequencial.cs" />
     <Compile Include="Repositorio\RepositorioGenerico.cs" />
+    <Compile Include="Servicos\ServAlocarProfessorEmTurma.cs" />
+    <Compile Include="Servicos\ServDevolverMidia.cs" />
     <Compile Include="Servicos\ServEmprestarMidia.cs" />
+    <Compile Include="Servicos\ServGerarCodigoEntidade.cs" />
+    <Compile Include="Servicos\ServMatricularAluno.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,0 +1,77 @@
+﻿@model UpperAcademy.Dominio.Modelo.Turma
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detalhar</title>
+</head>
+<body>
+    <h1> Detalhes da turma </h1>
+    <fieldset>
+        <legend>Turma</legend>
+    
+        <div class="display-label">
+             Data de Início: @Html.DisplayFor(model => model.Data_inicio)
+        </div>
+    
+        <div class="display-label">
+             Data de término: @Html.DisplayFor(model => model.Data_fim)
+        </div>
+    
+        <div class="display-label">
+             Nível: @Html.DisplayFor(model => model.Descricao_Nivel)
+        </div>
+    
+        <div class="display-label">
+             Status: @Html.DisplayFor(model => model.Status)
+        </div>
+    
+    
+            @{
+            if (Model.Professor != null)
+            {
+                <div class="display-label">
+                    Professor: @Html.DisplayFor(professor => Model.Professor.Nome)
+                </div>
+            }
+        }
+        
+        </fieldset>
+        
+        <h4> Alunos </h4>
+        
+        <table>
+            <tr>
+                <th>
+                   Matrícula
+                </th>
+                <th>
+                   Nome
+                </th>
+            </tr>
+            @foreach (var itemModel in Model.Alunos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(aluno => itemModel.Matricula)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(aluno => itemModel.Nome)
+                    </td>
+                </tr>
+            }
+
+        
+        </table>
+    <p>
+        @Html.ActionLink("Editar", "Editar", new { id = Model.ID }) |
+        @Html.ActionLink("Voltar", "Listar")
+    </p>
+</body>
+</html>

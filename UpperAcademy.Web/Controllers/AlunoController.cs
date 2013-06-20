@@ -22,6 +22,7 @@ namespace UpperAcademy.Web.Controllers
         [HttpGet]
         public ActionResult Adicionar()
         {
+            ViewBag.Head1 = "Adicionar novo aluno";
             Aluno aluno = new Aluno();
             aluno.DefinirEndereco(new EnderecoAluno(aluno));
             aluno.CriarTelefonesPadrao();
@@ -38,6 +39,7 @@ namespace UpperAcademy.Web.Controllers
         [HttpGet]
         public ActionResult Editar(Guid ID)
         {
+            ViewBag.Head1 = "Editar aluno";
             Aluno aluno = repositorio.ObterPorID(ID.ToString());
             return View("Adicionar", aluno);
         }

@@ -48,7 +48,10 @@
     <Compile Include="Repositorios\MidiaTeste.cs" />
     <Compile Include="Repositorios\ProfessorTeste.cs" />
     <Compile Include="Repositorios\TurmaTeste.cs" />
+    <Compile Include="Servicos\ServAlocarProfessorTeste.cs" />
+    <Compile Include="Servicos\ServGerarSequencialEntidadeTeste.cs" />
     <Compile Include="Servicos\ServListaFixaNivelTeste.cs" />
+    <Compile Include="Servicos\ServMatricularAlunoTeste.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UpperAcademy.Dominio\UpperAcademy.Dominio.csproj">
