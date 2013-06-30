@@ -1,0 +1,83 @@
+﻿@model UpperAcademy.Web.Models.TurmaViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Matricular aluno</title>
+
+    <script type="text/javascript">
+        function redirecionar() {
+            window.location = "../Turma/Index";
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <h1> Selecionar aluno para matrícula </h1>
+    <p>
+        @Html.ActionLink("Voltar", "Editar", new {id=Model.Turma.ID})
+    </p>
+    <br />
+      @using (Html.BeginForm())
+      {
+          <fieldset>
+              <table>
+                <tr>
+                  <td>
+                      Digite o nome:
+                  </td>
+                  <td>
+                      @Html.EditorFor(model => model.NomePesquisa)
+                  </td>
+                  <td>
+                      <input type="submit" value="Filtrar" />
+                  </td>
+                </tr>
+              </table>
+          </fieldset>
+      }
+    <br />
+    <table>
+        <tr>
+            <th>
+                ID
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+               Status
+            </th>
+            <th>
+               Operação
+            </th>
+        </tr>
+    
+    @foreach (var item in Model.ListaProfessores) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao_Status)
+            </td>
+            <td>
+                @Html.ActionLink("Alocar na turma", "AlocarProfessor", new { id=item.ID }) 
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

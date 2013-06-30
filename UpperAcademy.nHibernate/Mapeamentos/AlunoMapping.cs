@@ -13,6 +13,7 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
         public AlunoMapping()
         {
             Id(a => a.ID).Length(40);
+            Map(a => a.Matricula).Length(6);
             Map(a => a.Nome).Length(50);
             Map(a => a.Data_Nascimento).Column("Dt_Nascimento").CustomType("date");
             Map(a => a.Status);

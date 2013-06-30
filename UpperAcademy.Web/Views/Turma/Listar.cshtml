@@ -32,27 +32,31 @@
     <table>
         <tr>
             <th>
-                Nível
-            </th>
-            <th>
                 Data Início
             </th>
             <th>
                 Data Término
+            </th>
+            <th>
+                Nível
+            </th>
+            <th>
+                Operações
             </th>
         </tr>
     
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Nivel)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Data_inicio)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Data_fim)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao_Nivel)
+            </td>
+
             <td>
                 @Html.ActionLink("Editar", "Editar", new { id=item.ID }) |
                 @Html.ActionLink("Detalhes", "Detalhar", new { id=item.ID }) |

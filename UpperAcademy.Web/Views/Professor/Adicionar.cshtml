@@ -10,10 +10,16 @@
 
 <head>
     <meta name="viewport" content="width=device-width" />
-
+    <title>@ViewBag.Head1 </title>
 </head>
 <body>
    <h1> @ViewBag.Head1 </h1>
+
+   <div>
+       @Html.ActionLink("Voltar", "Listar")
+   </div>
+   <br />
+
 
     @using (Html.BeginForm()) {
         
@@ -35,6 +41,13 @@
             @Html.EditorFor(model => model.Data_Nascimento)
         </div>
 
+        <div class="editor-label">
+            Nível:
+        </div>
+
+        <div class="editor-field">
+          @Html.DropDownList("ListaNiveis")
+        </div>
 
         <h3>
             Endereço
@@ -119,9 +132,5 @@
         </p>
     </fieldset>
     }
-    
-    <div>
-        @Html.ActionLink("Voltar", "Listar")
-    </div>
 </body>
 </html>

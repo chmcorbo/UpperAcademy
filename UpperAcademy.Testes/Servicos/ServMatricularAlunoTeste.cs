@@ -20,7 +20,7 @@ namespace UpperAcademy.Testes.Servicos
         public void TestarMatricularAluno()
         {
             RepositorioEntidadeSequencial repositorioEntidadeSequencial = new RepositorioEntidadeSequencial();
-            RepositorioGenerico<Aluno> repositorioAluno = new RepositorioGenerico<Aluno>();
+            RepositorioAluno repositorioAluno = new RepositorioAluno();
             RepositorioGenerico<Turma> repositorioTurma= new RepositorioGenerico<Turma>();
             ServMatricularAluno servMatricularAluno = new ServMatricularAluno();
 
@@ -36,7 +36,7 @@ namespace UpperAcademy.Testes.Servicos
             if (_turma == null)
             {
                 TurmaTeste turmaTeste = new TurmaTeste();
-                turmaTeste.Incluir_Turma_Sem_Aluno_Sem_Professor();
+                turmaTeste.Incluir_Turma();
                 _turma = repositorioTurma.ListarTudo().FirstOrDefault();
             }
 

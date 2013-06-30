@@ -42,6 +42,7 @@ namespace UpperAcademy.Dominio.Modelo
             Nivel = 1;
             _ServListaFixaNivel = new ServListaFixaNivel();
             _ServListaFixaStatusAluno = new ServListaFixaStatusProfessor();
+            SetStatusCadastrado();
         }
 
         public virtual void CriarTelefonesPadrao()

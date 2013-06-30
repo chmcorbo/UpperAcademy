@@ -41,7 +41,7 @@ namespace UpperAcademy.Testes.Servicos
             if (_turma == null)
             {
                 TurmaTeste turmaTeste = new TurmaTeste();
-                turmaTeste.Incluir_Turma_Sem_Aluno_Sem_Professor();
+                turmaTeste.Incluir_Turma();
                 _turma = _repositorioTurma.ListarTudo().FirstOrDefault();
             }
 

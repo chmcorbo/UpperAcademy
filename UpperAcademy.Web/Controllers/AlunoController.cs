@@ -12,7 +12,7 @@ namespace UpperAcademy.Web.Controllers
     {
         //
         // GET: /Aluno/
-        private RepositorioGenerico<Aluno> repositorio = new RepositorioGenerico<Aluno>();
+        private RepositorioAluno repositorio = new RepositorioAluno();
 
         public ActionResult Listar()
         {

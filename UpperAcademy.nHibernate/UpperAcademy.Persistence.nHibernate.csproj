@@ -64,9 +64,11 @@
     <Compile Include="Modelo\EntidadeSequencial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorio\Banco.cs" />
+    <Compile Include="Repositorio\RepositorioAluno.cs" />
     <Compile Include="Repositorio\RepositorioEmprestimoMidia.cs" />
     <Compile Include="Repositorio\RepositorioEntidadeSequencial.cs" />
     <Compile Include="Repositorio\RepositorioGenerico.cs" />
+    <Compile Include="Repositorio\RepositorioProfessor.cs" />
     <Compile Include="Servicos\ServAlocarProfessorEmTurma.cs" />
     <Compile Include="Servicos\ServDevolverMidia.cs" />
     <Compile Include="Servicos\ServEmprestarMidia.cs" />

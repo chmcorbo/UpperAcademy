@@ -35,6 +35,11 @@ textarea {
     margin: 0.5em 0 0 0;
 }
 
+.editor-field-readonly {
+    margin: 0.5em 0 0 0;
+    
+}
+
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/

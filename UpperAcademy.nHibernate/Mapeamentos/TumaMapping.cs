@@ -16,7 +16,7 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
             Map(t => t.Data_inicio).Column("Dt_Inicio");
             Map(t => t.Data_fim).Column("Dt_Fim");
             References(t => t.Professor).Column("Id_Professor").Cascade.All();
-            HasManyToMany(t => t.Alunos).Table("TB_ALUNO_TURMA");
+            HasManyToMany(t => t.Alunos).Table("TB_ALUNO_TURMA").Cascade.All();
             Table("TB_TURMA");
         }
     }

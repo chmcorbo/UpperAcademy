@@ -24,7 +24,7 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
             }
         }
 
-        public void Adicionar(T pEntidadeBase)
+        public virtual void Adicionar(T pEntidadeBase)
         {
             ITransaction transaction = Session.BeginTransaction();
             try
@@ -46,12 +46,12 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
 
         }
 
-        public void Atualizar(T pEntidadeBase)
+        public virtual void Atualizar(T pEntidadeBase)
         {
             this.Adicionar(pEntidadeBase);
         }
 
-        public void Excluir(T pEntidadeBase)
+        public virtual void Excluir(T pEntidadeBase)
         {
             ITransaction transaction = Session.BeginTransaction();
             try
@@ -70,7 +70,7 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
             }
         }
 
-        public IQueryable<T> ListarTudo()
+        public virtual IQueryable<T> ListarTudo()
         {
             ITransaction transaction = Session.BeginTransaction();
             IQueryable<T> lista = null;
@@ -88,7 +88,7 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
             return lista;
         }
 
-        public T ObterPorID(String pID)
+        public virtual T ObterPorID(String pID)
         {
             IQueryOver<T> queryOver = Session.QueryOver<T>().Where(t => t.ID == pID);
             return queryOver.List<T>().FirstOrDefault();

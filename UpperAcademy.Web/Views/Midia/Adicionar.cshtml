@@ -13,6 +13,12 @@
 </head>
 <body>
    <h1> Adicionar nova mídia </h1>
+   
+   <div>
+       @Html.ActionLink("Voltar", "Listar")
+   </div>
+   <br />
+
     @using (Html.BeginForm()) {
         @Html.ValidationSummary(true)
     
@@ -49,8 +55,5 @@
         </fieldset>
     }
     
-    <div>
-        @Html.ActionLink("Voltar", "Listar")
-    </div>
 </body>
 </html>

@@ -17,7 +17,7 @@ namespace UpperAcademy.Testes.Repositorios
         private MidiaTeste midiaTeste;
 
         private RepositorioEmprestimoMidia repositorioEmprestimoMidia;
-        private RepositorioGenerico<Aluno> repositorioAluno;
+        private RepositorioAluno repositorioAluno;
         private RepositorioGenerico<Midia> repositorioMidia;
 
         private IServEmprestarMidia servEmprestarMidia;
@@ -29,7 +29,7 @@ namespace UpperAcademy.Testes.Repositorios
             midiaTeste = new MidiaTeste();
 
             repositorioEmprestimoMidia = new RepositorioEmprestimoMidia();
-            repositorioAluno = new RepositorioGenerico<Aluno>();
+            repositorioAluno = new RepositorioAluno();
             repositorioMidia = new RepositorioGenerico<Midia>();
 
             

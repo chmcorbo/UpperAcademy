@@ -14,11 +14,11 @@ namespace UpperAcademy.Testes.Repositorios
     {
         Aluno _aluno;
         Aluno _alunoRecuperado;
-        RepositorioGenerico<Aluno> repositorio;
+        RepositorioAluno repositorio;
         
         public AlunoTeste()
         {
-            repositorio = new RepositorioGenerico<Aluno>();
+            repositorio = new RepositorioAluno();
         }
 
         private Aluno Incluir_Aluno_Sem_Endereco_Sem_Telefone()
@@ -101,6 +101,7 @@ namespace UpperAcademy.Testes.Repositorios
 
             try
             {
+                
                 Incluir_Alunos();
                 Incluir_Aluno_Sem_Endereco_Sem_Telefone();
                 Incluir_Aluno_Com_Endereco_Sem_Telefone();

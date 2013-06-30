@@ -9,19 +9,23 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-
+    <title> Detalhes do professor </title>
 </head>
 <body>
    <h1> Detalhes do professor </h1>
     <fieldset>
         <legend>Professor</legend>
     
-                <div class="display-label">
+         <div class="display-label">
              Nome: @Html.DisplayFor(model => model.Nome)
         </div>
     
         <div class="display-label">
              Data de Nascimento: @Html.DisplayFor(model => model.Data_Nascimento)
+        </div>
+
+        <div class="display-label">
+             Nivel: @Html.DisplayFor(model => model.Descricao_Nivel)
         </div>
 
         <h3>
@@ -74,9 +78,7 @@
         </div>
 
         <h4>
-          <div>
-             Status: @Html.DisplayFor(model => model.Descricao_Status) 
-          </div>
+           Status: @Html.DisplayFor(model => model.Descricao_Status) 
         </h4>
     </fieldset>
     <p>

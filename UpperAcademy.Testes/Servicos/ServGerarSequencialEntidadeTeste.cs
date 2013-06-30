@@ -25,6 +25,22 @@ namespace UpperAcademy.Testes.Servicos
             _ServGerarCodigoEntidade = new ServGerarCodigoEntidade();
 
         }
+
+        public Boolean Carga_Inicial()
+        {
+            Boolean erro = false;
+
+            try
+            {
+                TesteInicial();
+            }
+            catch
+            {
+                erro = true;
+            }
+            return !erro;
+        }
+
         
         [TestFixtureSetUp]
         public void TesteInicial()
@@ -34,7 +50,7 @@ namespace UpperAcademy.Testes.Servicos
             _entidadeSequencial = _repositorioEntidadeCodigo.ObterPoNome(_aluno.GetType().Name);
             if (_entidadeSequencial==null)
             {
-                _entidadeSequencial = new EntidadeSequencial { Nome = _aluno.GetType().Name, UltimoCodigo = 100 };
+                _entidadeSequencial = new EntidadeSequencial { Nome = _aluno.GetType().Name, UltimoCodigo = 0 };
                 _repositorioEntidadeCodigo.Adicionar(_entidadeSequencial);
             }
         }

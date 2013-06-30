@@ -11,7 +11,7 @@ namespace UpperAcademy.Persistence.nHibernate.Servicos
 {
     public class ServMatricularAluno : IServMatricularAluno
     {
-        private RepositorioGenerico<Aluno> repositorioAluno;
+        private RepositorioAluno repositorioAluno;
         private RepositorioGenerico<Turma> repositorioTurma;
         private RepositorioEntidadeSequencial repositorioEntidadeCodigo;
         private ServGerarCodigoEntidade servGerarCodigoEntidade;
@@ -20,7 +20,7 @@ namespace UpperAcademy.Persistence.nHibernate.Servicos
         public ServMatricularAluno()
         {
             repositorioEntidadeCodigo = new RepositorioEntidadeSequencial();
-            repositorioAluno = new RepositorioGenerico<Aluno>();
+            repositorioAluno = new RepositorioAluno();
             repositorioTurma = new RepositorioGenerico<Turma>();
             servGerarCodigoEntidade = new ServGerarCodigoEntidade();
         }
@@ -29,8 +29,11 @@ namespace UpperAcademy.Persistence.nHibernate.Servicos
         {
             try
             {
-                String matriculaAluno = servGerarCodigoEntidade.Executar(pAluno.GetType().Name).ToString();
-                pAluno.Matricula = matriculaAluno;
+                if (pAluno.Matricula == String.Empty || pAluno.Matricula==null)
+                {
+                    String matriculaAluno = servGerarCodigoEntidade.Executar(pAluno.GetType().Name).ToString();
+                    pAluno.Matricula = matriculaAluno;
+                }
                 pAluno.StatusMatriculado();
                 repositorioAluno.Atualizar(pAluno);
                 pTurma.Alunos.Add(pAluno);
