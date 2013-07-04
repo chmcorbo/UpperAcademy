@@ -1,0 +1,91 @@
+﻿@model IEnumerable<UpperAcademy.Dominio.Modelo.EmprestimoMidia>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listar empréstimos de mídia</title>
+
+        <script type="text/javascript">
+            function redirecionar() {
+                window.location = "../Home/Index";
+            }
+    </script>
+
+
+</head>
+
+<body>
+    <p>
+        <button onclick="redirecionar();">  Voltar  </button> 
+    </p>
+    <table>
+        <tr>
+            <th>
+                Matrícula
+            </th>
+
+            <th>
+                Aluno
+            </th>
+
+            <th>
+                Midia
+            </th>
+
+            <th>
+                Autor
+            </th>
+
+            <th>
+                Data empréstimo
+            </th>
+            <th>
+                Data Devolução
+            </th>
+            
+            <th>
+              Operação
+            </th>
+
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aluno.Matricula)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Aluno.Nome)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Midia.Descricao)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Midia.Autor)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Emprestimo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Devolucao)
+            </td>
+            
+            <td>
+                @Html.ActionLink("Selecionar", "SolicitarConfirmacaoDevolucao", new { pID_Emprestimo = item.ID }) |
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

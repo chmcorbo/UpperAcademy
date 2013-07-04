@@ -140,13 +140,17 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\AlunoController.cs" />
+    <Compile Include="Controllers\DevolucaoController.cs" />
+    <Compile Include="Controllers\EmprestimoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MidiaController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\TurmaViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -302,6 +306,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Turma\ListarProfessores.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Login\Autenticar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Emprestimo\EscolherAluno.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Emprestimo\EscolherMidia.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Emprestimo\ConfirmarEmprestimo.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Devolucao\Listar.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Devolucao\SolicitarConfirmacaoDevolucao.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

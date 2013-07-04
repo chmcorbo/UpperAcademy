@@ -1,0 +1,90 @@
+﻿@model UpperAcademy.Dominio.Modelo.EmprestimoMidia
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SolicitarConfirmarDevolucao</title>
+</head>
+<body>
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+    
+        <fieldset>
+            <legend>EmprestimoMidia</legend>
+
+            @Html.HiddenFor(model => model.ID)
+
+            <table>
+               <tr>
+                 <th class="editor-label">
+                   Matrícula
+                 </th>
+                 <th class="editor-label">
+                   @Html.LabelForModel(Model.Aluno.Matricula)
+                 </th>
+               </tr>
+                 
+               <tr>
+                 <th class="editor-label">
+                   Aluno
+                 </th>
+                 <th class="editor-label">
+                   @Html.LabelForModel(Model.Aluno.Nome)
+                 </th>
+               </tr>
+
+               <tr>
+                 <th class="editor-label">
+                   Mídia
+                 </th>
+                 <th class="editor-label">
+                   @Html.LabelForModel(Model.Midia.Descricao)
+                 </th>
+               </tr>
+
+               <tr>
+                 <th class="editor-label">
+                   Mídia
+                 </th>
+                 <th class="editor-label">
+                   @Html.LabelForModel(Model.Midia.Autor)
+                 </th>
+               </tr>
+
+               <tr>
+                 <th class="editor-label">
+                   Data empréstimo
+                 </th>
+                 <th class="editor-label">
+                   @Html.LabelForModel(Model.Data_Emprestimo)
+                 </th>
+               </tr>
+
+               <tr>
+                 <th class="editor-label">
+                   Data devolução
+                 </th>
+                 <th class="editor-label">
+                   @Html.LabelForModel(Model.Data_Devolucao)
+                 </th>
+               </tr>
+            
+            </table>
+    
+            <p>
+                <input type="submit" value="Confirmar" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Voltar", "Listar")
+    </div>
+</body>
+</html>

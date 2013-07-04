@@ -1,0 +1,83 @@
+﻿@model UpperAcademy.Dominio.Modelo.EmprestimoMidia
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Confirmar Empréstimo</title>
+   <script type="text/javascript">
+       function redirecionar() {
+           window.location = "../Emprestimo/EscolherAluno";
+       }
+    </script>
+
+</head>
+<body>
+    <h1> Emprétimo de mídia </h1>
+    <h2> Confirmar empréstimo de mídia </h2>
+    <p>
+        
+    </p>
+
+    <fieldset>
+    <legend>Dados do empréstimo</legend>
+
+        <table class="editor-label">
+          <tr>
+            <th class="editor-label">
+              Aluno
+            </th>
+            <th class="editor-field">
+              @Html.DisplayFor(model => model.Aluno.Nome)
+            </th>
+          </tr>
+ 
+          <tr>
+            <th class="display-label">
+              Matrícula
+            </th>
+            <th class="display-field">
+              @Html.DisplayFor(model => model.Aluno.Matricula)
+            </th>
+          </tr>
+          <tr>
+            <th class="display-label">
+              Mídia
+            </th>
+            <th class="display-field">
+              @Html.DisplayFor(model => model.Midia.Descricao)
+            </th>
+          </tr>
+
+          <tr>
+            <th class="display-label">
+              Autor
+            </th>
+            <th class="display-field">
+              @Html.DisplayFor(model => model.Midia.Autor)
+            </th>
+          </tr>
+
+          <tr>
+            <th class="display-label">
+              Data empréstimo
+            </th>
+            <th class="display-field">
+              @Html.DisplayFor(model => model.Data_Emprestimo)
+            </th>
+          </tr>
+        </table>
+     </fieldset>
+    <p>
+        @Html.ActionLink("Confirmar", "GravarEmprestimo") |
+        @Html.ActionLink("Alterar mídia", "EscolherMidia")
+        @Html.ActionLink("Alterar Aluno", "AlterarAluno")
+        <a href="/Home/Index"> Voltar </a> <br />
+    </p>
+</body>
+</html>

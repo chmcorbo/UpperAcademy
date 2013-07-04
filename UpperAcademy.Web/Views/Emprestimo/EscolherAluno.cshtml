@@ -1,0 +1,68 @@
+﻿@model IEnumerable<UpperAcademy.Dominio.Modelo.Aluno>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Selecionar aluno</title>
+
+    <script type="text/javascript">
+      function redirecionar() {
+          window.location = "../Home/Index";
+      }
+    </script>
+
+</head>
+<body>
+    <h1> Emprétimo de mídia </h1>
+    <h2> Selecionar aluno </h2>
+    <p>
+       <button onclick="redirecionar();">  Voltar  </button> 
+    </p>
+
+    <table>
+        <tr>
+            <th>
+                Matrícula
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                Data de nascimento
+            </th>
+            <th>
+                Status
+            </th>
+            <th>
+                Operação
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Matricula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Data_Nascimento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao_Status)
+            </td>
+            <td>
+                @Html.ActionLink("Selecionar", "SelecionarAluno", new { pID_Aluno = item.ID })
+            </td>
+        </tr>
+    }
+    </table>
+</body>
+</html>

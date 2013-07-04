@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace UpperAcademy.Web.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         //
@@ -21,5 +22,11 @@ namespace UpperAcademy.Web.Controllers
             return RedirectToRoute("Aluno");
         }
 
+        public ActionResult Sair()
+        {
+            Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
+            return RedirectToAction("Autenticar", "Login");
+        }
     }
 }

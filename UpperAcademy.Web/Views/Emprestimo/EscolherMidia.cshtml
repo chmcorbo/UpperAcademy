@@ -1,0 +1,69 @@
+﻿@model IEnumerable<UpperAcademy.Dominio.Modelo.Midia>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Escolher Mídia</title>
+    <script type="text/javascript">
+       function redirecionar() 
+       {
+          window.location = "../Emprestimo/EscolherAluno";
+       }
+    </script>
+
+</head>
+<body>
+    <h1> Emprétimo de mídia </h1>
+    <h2> Selecionar mídia </h2>
+    <p>
+       <button onclick="redirecionar();">  Voltar  </button> 
+    </p>
+
+    <table>
+        <tr>
+            <th>
+                Descrição
+            </th>
+            <th>
+                Autor
+            </th>
+            <th>
+                Qtde de cópias
+            </th>
+            <th>
+                Qtde Disponível
+            </th>
+            <th>
+               Operação
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtde_Copias)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Qtde_Disponivel)
+            </td>
+            <td>
+                @Html.ActionLink("Selecionar", "SelecionarMidia", new { pID_Midia = item.ID }) |
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
