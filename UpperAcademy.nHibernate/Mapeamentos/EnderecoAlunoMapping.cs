@@ -20,7 +20,7 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
             Map(e => e.UF).Length(2);
             Map(e => e.CEP).Length(10);
 
-            References(e => e.Aluno).Column("Id_Aluno").Cascade.None();
+            //References(e => e.Aluno).Column("Id_Aluno").Cascade.All();
             Table("TB_ENDERECO_ALUNO");
         }
 

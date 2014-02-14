@@ -18,10 +18,10 @@ namespace UpperAcademy.Persistence.nHibernate.Mapeamentos
             Map(a => a.Data_Nascimento).Column("Dt_Nascimento").CustomType("date");
             Map(a => a.Status);
 
-            References(e => e.Endereco).Column("Id_Endereco").Cascade.All();
-            References(t1 => t1.TelefoneResidencial).Column("Id_Telefone_Res").Cascade.All();
-            References(t2 => t2.TelefoneComercial).Column("Id_Telefone_Com").Cascade.All();
-            References(t3 => t3.TelefoneCelular).Column("Id_Telefone_Cel").Cascade.All();
+            References(e => e.Endereco).Column("Id_Endereco").Cascade.None();
+            References(t1 => t1.TelefoneResidencial).Column("Id_Telefone_Res").Cascade.None();
+            References(t2 => t2.TelefoneComercial).Column("Id_Telefone_Com").Cascade.None();
+            References(t3 => t3.TelefoneCelular).Column("Id_Telefone_Cel").Cascade.None();
             
             //HasMany(t => t.Telefones).Cascade.All();
             Table("TB_ALUNO");

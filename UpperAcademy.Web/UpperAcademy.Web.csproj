@@ -146,6 +146,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MidiaController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\RelatoriosController.cs" />
     <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -324,6 +325,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Devolucao\SolicitarConfirmacaoDevolucao.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Relatorios\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Relatorios\MidiasEmprestadas.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

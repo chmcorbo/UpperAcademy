@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Relatórios</title>
+    <script type="text/javascript">
+        function redirecionar() {
+            window.location = "../Home/Index";
+        }
+    </script>
+
+</head>
+<body>
+    <h1> Relatórios </h1>
+    <button onclick="redirecionar();">  Voltar  </button> 
+    <br />
+    <br />
+    <div>
+        @Html.ActionLink("Relatório de mídias emprestadas", "MidiasEmprestadas")
+    </div>
+</body>
+</html>

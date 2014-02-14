@@ -56,6 +56,7 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
             ITransaction transaction = Session.BeginTransaction();
             try
             {
+                Session.Clear();
                 Session.Delete(pEntidadeBase);
                 transaction.Commit();
             }
@@ -76,6 +77,7 @@ namespace UpperAcademy.Persistence.nHibernate.Repositorio
             IQueryable<T> lista = null;
             try
             {
+                Session.Clear();
                 lista = Session.CreateCriteria(typeof(T)).List<T>().AsQueryable();
                 transaction.Commit();
             }

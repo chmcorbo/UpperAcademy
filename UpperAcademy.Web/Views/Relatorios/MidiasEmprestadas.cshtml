@@ -1,0 +1,62 @@
+﻿@model IEnumerable<UpperAcademy.Dominio.Modelo.EmprestimoMidia>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Relatório de mídias emprestadas</title>
+    <script type="text/javascript">
+        function redirecionar() {
+           window.location = "../Relatorios/Index";
+        }
+    </script>
+
+</head>
+<body>
+
+    <h1> Relatório de mídias emprestadas </h1>
+    <p>
+        <input type="button" value="Voltar" onclick="redirecionar();" />
+    </p>
+
+    <table>
+        <tr>
+            <th>
+               Mídia
+            </th>
+            <th> 
+               Autor
+            </th>
+            <th>
+               Aluno
+            </th>
+            <th>
+               Matrícula
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Midia.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Midia.Autor)            
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aluno.Nome)            
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aluno.Matricula)            
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
